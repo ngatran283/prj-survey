@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
+import Payment from './Payment'
 
 class Header extends Component {
     renderContent() {
@@ -10,7 +11,9 @@ class Header extends Component {
             case false:
                 return <li><a href="/auth/google">Login with google</a></li>;
             default:
-                return <li><a href="/api/logout">Logout</a></li>;
+                return [
+                    <li key="1"><Payment /></li>,
+                    <li key="2"><a href="/api/logout">Logout</a></li>];
         }
     }
 
