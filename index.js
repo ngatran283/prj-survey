@@ -1,5 +1,6 @@
 const express = require('express');
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 const keys = require('./config/keys');
 const mongoose = require('mongoose');
@@ -22,6 +23,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 //express handle for production
 if(process.env.NODE==='production'){
     app.use(express.static('client/build'));
