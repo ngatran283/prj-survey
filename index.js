@@ -25,7 +25,7 @@ require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 require('./routes/surveyRoutes')(app);
 //express handle for production
-if(process.env.NODE==='production'){
+if(process.env.NODE_ENV==='production'){
     const path = require('path');
     app.use(express.static(path.join(__dirname, './client/build')))
     app.get('*', function(_, res) {
