@@ -13,6 +13,7 @@ module.exports = (app) => {
         res.send('Thanks for voting!')
     });
     app.post('/api/surveys/webhooks', (req, res) => {
+        console.log(req.body);
         const p = new Path('/api/surveys/:surveyId/:choice');
         _.chain(req.body)
             .map(({url,email})=>{
@@ -22,6 +23,7 @@ module.exports = (app) => {
             .compact()
             .uniqBy('email','surveyId')
             .forEach(({surveyId,email,choice})=>{
+                console.log('Search and update')
                 Survey.updateOne(
                     {
                         _id: surveyId,
